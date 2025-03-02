@@ -222,7 +222,7 @@ const TableData = (props) => {
                                   <Form.Control
                                     type="text"
                                     name="date"
-                                    value={ViewingTransaction[0].date}
+                                    value={ViewingTransaction[0].date.split('T')[0]}
                                   />
                                 </Form.Group>
                               </Form>
