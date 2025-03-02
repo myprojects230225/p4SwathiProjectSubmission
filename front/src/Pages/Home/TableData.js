@@ -5,7 +5,7 @@ import EditNoteIcon from "@mui/icons-material/EditNote";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import ViewModuleIcon from "@mui/icons-material/ViewModule"
 import "./home.css";
-import { deleteTransactions, editTransactions } from "../../utils/ApiRequest";
+import { deleteTransactions, editTransactions, getTransaction } from "../../utils/ApiRequest";
 import axios from "axios";
 
 const TableData = (props) => {
@@ -13,6 +13,7 @@ const TableData = (props) => {
   const [transactions, setTransactions] = useState([]);
   // const [loading, setLoading] = useState(false);
   const [editingTransaction, setEditingTransaction] = useState(null);
+  const [ViewingTransaction, setViewingTransaction] = useState(null);
   const [currId, setCurrId] = useState(null);
   const [refresh, setRefresh] = useState(false);
   const [user, setUser] = useState(null);
@@ -37,7 +38,7 @@ const TableData = (props) => {
       setEditingTransaction(editTran);
       handleShow();
     }
-  };
+  }
 
   const handleEditSubmit = async (e) => {
     // e.preventDefault();
@@ -147,7 +148,86 @@ const TableData = (props) => {
                     {ViewingTransaction ? (
                       <>
                         <div>
-                          <Modal show={show} onHide={handleClose} centered></Modal>
+                          <Modal show={show} onHide={handleClose} centered>
+                            <Modal.Header closeButton>
+                              <Modal.Title>
+                                Transaction Details
+                              </Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                              <Form>
+                                <Form.Group
+                                  className="mb-3"
+                                  controlId="formName"
+                                >
+                                  <Form.Label>Title</Form.Label>
+                                  <Form.Control
+                                    name="title"
+                                    type="text"
+                                    value={ViewingTransaction[0].title}
+                                  />
+                                </Form.Group>
+                                
+                                <Form.Group
+                                  className="mb-3"
+                                  controlId="formAmount"
+                                >
+                                  <Form.Label>Amount</Form.Label>
+                                  <Form.Control
+                                    name="amount"
+                                    type="text"
+                                    value={ViewingTransaction[0].amount}
+                                  />
+                                </Form.Group>
+
+                                <Form.Group
+                                  className="mb-3"
+                                  controlId="formSelect"
+                                >
+                                <Form.Label>Category</Form.Label>
+                                  <Form.Control
+                                    name="category"
+                                    value={ViewingTransaction[0].category}
+                                  />  
+                                </Form.Group>
+
+                                <Form.Group
+                                  className="mb-3"
+                                  controlId="formDescription"
+                                >
+                                <Form.Label>Description</Form.Label>
+                                  <Form.Control
+                                   type="text"
+                                    name="description"
+                                    value={ViewingTransaction[0].description}
+                                  />
+                                </Form.Group>
+
+                                <Form.Group
+                                  className="mb-3"
+                                  controlId="formSelect1"
+                                >
+                                <Form.Label>Transaction Type</Form.Label>
+                                  <Form.Control
+                                   name="transactionType"
+                                    value={ViewingTransaction[0].transactionType}
+                                  />
+                                </Form.Group>
+
+                                <Form.Group
+                                  className="mb-3"
+                                  controlId="formDate"
+                                >
+                                <Form.Label>Date</Form.Label>
+                                  <Form.Control
+                                    type="text"
+                                    name="date"
+                                    value={ViewingTransaction[0].date}
+                                  />
+                                </Form.Group>
+                              </Form>
+                            </Modal.Body>
+                          </Modal>
                         </div>
                       </>
                       ) : (
