@@ -1,11 +1,13 @@
 import express from 'express';
-import { addTransactionController, deleteTransactionController, getAllTransactionController, updateTransactionController } from '../controllers/transactionController.js';
+import { addTransactionController, deleteTransactionController, getAllTransactionController, updateTransactionController, getIndividualTransactionController } from '../controllers/transactionController.js';
 
 const router = express.Router();
 
 router.route("/addTransaction").post(addTransactionController);
 
 router.route("/getTransaction").post(getAllTransactionController);
+
+router.route("/getTransaction/:id").post(getIndividualTransactionController);
 
 router.route("/deleteTransaction/:id").post(deleteTransactionController);
 

@@ -119,6 +119,48 @@ export const getAllTransactionController = async (req, res) => {
   }
 };
 
+export const getIndividualTransactionController = async (req, res) => {
+  try {
+    const  userId = req.body.userId;
+
+    const transactionId = req.param.id;
+
+    console.log(userId, transactionId);
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    // Create a query object with the user and type conditions
+    const query = {
+      user: userId,
+    };
+
+    if (type !== 'all') {
+      query.transactionType = type;
+    }
+
+    // console.log(query);
+
+    const transactionElement = await Transaction.findById(query,transactionId);
+     console.log(transactionElement);
+
+    return res.status(200).json({
+      success: true,
+      transactions: transactions,
+    });
+  } catch (err) {
+    return res.status(401).json({
+      success: false,
+      messages: err.message,
+    });
+  }
+};
 
 export const deleteTransactionController = async (req, res) => {
   try {

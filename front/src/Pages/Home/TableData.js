@@ -3,6 +3,7 @@ import { Button, Container, Form, Modal, Table } from "react-bootstrap";
 import moment from "moment";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import ViewModuleIcon from "@mui/icons-material/ViewModule"
 import "./home.css";
 import { deleteTransactions, editTransactions } from "../../utils/ApiRequest";
 import axios from "axios";
@@ -15,6 +16,17 @@ const TableData = (props) => {
   const [currId, setCurrId] = useState(null);
   const [refresh, setRefresh] = useState(false);
   const [user, setUser] = useState(null);
+
+  const handleViewClick = (itemKey) => {
+    console.log("Clicked button ID:", itemKey);
+    if (transactions.length > 0) {
+      const viewTran = props.data.filter((item) => item._id === itemKey);
+      setCurrId(itemKey);
+      setViewingTransaction(viewTran);
+      handleShow();
+    }
+  };
+
 
   const handleEditClick = (itemKey) => {
     // const buttonId = e.target.id;
@@ -113,19 +125,35 @@ const TableData = (props) => {
                 <td>{item.category}</td>
                 <td>
                   <div className="icons-handle">
+                    <ViewModuleIcon
+                      sx={{ cursor: "pointer" }}
+                      key={item._id}
+                      id={item._id}
+                      onClick={() => handleViewClick(item._id)}
+                    />
                     <EditNoteIcon
                       sx={{ cursor: "pointer" }}
                       key={item._id}
                       id={item._id}
                       onClick={() => handleEditClick(item._id)}
                     />
-
                     <DeleteForeverIcon
                       sx={{ color: "red", cursor: "pointer" }}
                       key={index}
                       id={item._id}
                       onClick={() => handleDeleteClick(item._id)}
                     />
+
+                    {ViewingTransaction ? (
+                      <>
+                        <div>
+                          <Modal show={show} onHide={handleClose} centered></Modal>
+                        </div>
+                      </>
+                      ) : (
+                        <></>
+                      )
+                    }
 
                     {editingTransaction ? (
                       <>
