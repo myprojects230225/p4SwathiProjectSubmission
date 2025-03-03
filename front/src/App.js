@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "./App.css";
+import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './Pages/Auth/Login';
 import Register from './Pages/Auth/Register';
@@ -7,21 +7,16 @@ import './bootstrap/dist/css/bootstrap.min.css';
 import Home from './Pages/Home/Home';
 import SetAvatar from './Pages/Avatar/setAvatar';
 
-
-
 const App = () => {
-  const [theme, setTheme] = useState('light');
+  
+  const selectedTheme = localStorage.getItem('theme');
+  if(selectedTheme){
+    document.querySelector("body").setAttribute("data-theme", selectedTheme)
+  }
+
   return (
 
-    <div className={theme === "dark" ? "App dark" : "App"}>
-      <button onClick={() => {
-        if (theme === 'light') {
-          setTheme('dark');
-        }
-        else {
-          setTheme('light');
-        }
-      }}>theme</button>
+    <div className= "App">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />

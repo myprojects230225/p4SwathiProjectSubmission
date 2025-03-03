@@ -14,6 +14,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import BarChartIcon from "@mui/icons-material/BarChart";
+import ThemeOption from "../../components/ThemeOption";
+import "../../index.css";
+
 const Home = () => {
   const navigate = useNavigate();
 
@@ -175,6 +178,11 @@ const Home = () => {
   };
 
   return (
+    <>
+     <div className="theme-options">
+      <ThemeOption theme="dark" />
+      <ThemeOption theme="light" />
+    </div>
     <>
       <Header />
 
@@ -400,6 +408,7 @@ const Home = () => {
         </>
       )}
     </>
+   </> 
   );
 };
 

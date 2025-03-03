@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import "./style.css";
 import { useNavigate } from 'react-router-dom';
+import "../index.css";
 // import Particles from "react-tsparticles";
 // import { loadFull } from "tsparticles";
 const Header = () => {
@@ -113,7 +114,7 @@ const navigate = useNavigate();
       /> */}
     <Navbar className="navbarCSS" collapseOnSelect expand="lg" style={{position: 'relative', zIndex: "2 !important"}}>
       {/* <Navbar className="navbarCSS" collapseOnSelect expand="lg" bg="dark" variant="dark"> */}
-        <Navbar.Brand href="/" className="text-white navTitle">Personal Finance Manager</Navbar.Brand>
+        <Navbar.Brand href="/">Personal Finance Manager</Navbar.Brand>
         <Navbar.Toggle
             aria-controls="basic-navbar-nav"
             style={{
