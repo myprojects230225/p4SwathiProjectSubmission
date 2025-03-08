@@ -1,3 +1,5 @@
+@import url("../index.css");
+
 .navbarCSS{
     padding: 15px 20px;
     display: flex !important;
@@ -7,7 +9,9 @@
     width: 100vw;
     
 }
-
+.main-title{
+  color: var(--primary-text-color);
+}
 
 
 .navItemCSS{

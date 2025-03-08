@@ -1,5 +1,5 @@
 // NavbarComponent.js
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import "./style.css";
 import { useNavigate } from 'react-router-dom';
@@ -114,7 +114,7 @@ const navigate = useNavigate();
       /> */}
     <Navbar className="navbarCSS" collapseOnSelect expand="lg" style={{position: 'relative', zIndex: "2 !important"}}>
       {/* <Navbar className="navbarCSS" collapseOnSelect expand="lg" bg="dark" variant="dark"> */}
-        <Navbar.Brand href="/">Personal Finance Manager</Navbar.Brand>
+        <Navbar.Brand href="/" className='main-title'>Personal Finance Manager</Navbar.Brand>
         <Navbar.Toggle
             aria-controls="basic-navbar-nav"
             style={{

@@ -1,5 +1,5 @@
 // LoginPage.js
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 // import Particles from "react-tsparticles";
 // import { loadFull } from "tsparticles";
@@ -9,6 +9,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { loginAPI } from "../../utils/ApiRequest";
+import "../../index.css";
+import "./auth.css";
+import ThemeOption from "../../components/ThemeOption"
 
 const Login = () => {
   const navigate = useNavigate();
@@ -34,7 +37,6 @@ const Login = () => {
     pauseOnHover: false,
     draggable: true,
     progress: undefined,
-    theme: "dark",
   };
 
   const handleChange = (e) => {
@@ -141,22 +143,27 @@ const Login = () => {
           bottom: 0,
         }}
       /> */}
+      <div className="theme-options">
+        <ThemeOption theme="light" />
+        <ThemeOption theme="purple" />
+        <ThemeOption theme="dark" />
+      </div>
       <Container
         className="mt-5"
         style={{ position: "relative", zIndex: "2 !important" }}
       >
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
-            <h1 className="text-center mt-5">
+            <h1 className="text-center mt-5 login-icon-color">
               <AccountBalanceWalletIcon
-                sx={{ fontSize: 40, color: "white" }}
+                sx={{ fontSize: 40, }}
                 className="text-center"
               />
             </h1>
-            <h2 className="text-white text-center ">Login</h2>
+            <h2 className="text-center login-title">Login</h2>
             <Form>
               <Form.Group controlId="formBasicEmail" className="mt-3">
-                <Form.Label className="text-white">Email address</Form.Label>
+                <Form.Label className="email-title">Email address</Form.Label>
                 <Form.Control
                   type="email"
                   placeholder="Enter email"
@@ -167,7 +174,7 @@ const Login = () => {
               </Form.Group>
 
               <Form.Group controlId="formBasicPassword" className="mt-3">
-                <Form.Label className="text-white">Password</Form.Label>
+                <Form.Label className="pass-title">Password</Form.Label>
                 <Form.Control
                   type="password"
                   name="password"
@@ -186,7 +193,7 @@ const Login = () => {
                 }}
                 className="mt-4"
               >
-                <Link to="/forgotPassword" className="text-white lnk">
+                <Link to="/forgotPassword" className="forget-pass lnk">
                   Forgot Password?
                 </Link>
 
@@ -201,7 +208,7 @@ const Login = () => {
 
                 <p className="mt-3" style={{ color: "#9d9494" }}>
                   Don't Have an Account?{" "}
-                  <Link to="/register" className="text-white lnk">
+                  <Link to="/register" className="reg-title lnk">
                     Register
                   </Link>
                 </p>

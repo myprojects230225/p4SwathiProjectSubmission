@@ -179,10 +179,11 @@ const Home = () => {
 
   return (
     <>
-     <div className="theme-options">
-      <ThemeOption theme="dark" />
-      <ThemeOption theme="light" />
-    </div>
+      <div className="theme-options">
+        <ThemeOption theme="light" />
+        <ThemeOption theme="purple" />
+        <ThemeOption theme="dark" />
+      </div>
     <>
       <Header />
 
@@ -194,7 +195,7 @@ const Home = () => {
         <>
           <Container
             style={{ position: "relative", zIndex: "2 !important", backgroundColor:'black'  }}
-            className="mt-3"
+            className="mt-3 pb-3"
           >
             <div className="filterRow">
               <div className="text-white">

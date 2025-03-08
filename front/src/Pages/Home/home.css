@@ -1,3 +1,5 @@
+@import "../../index.css";
+
 .filterRow{
     display: flex;
     align-items: center;
