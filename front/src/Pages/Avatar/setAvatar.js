@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
-
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,10 +7,8 @@ import spinner from "../../assets/gg.gif";
 import "./avatar.css";
 import { Button } from "react-bootstrap";
 import { setAvatarAPI } from "../../utils/ApiRequest.js";
-// import Particles from "react-tsparticles";
-// import { loadFull } from "tsparticles";
+import ThemeOption from "../../components/ThemeOption";
 
-// import Buffer from "buffer";
 const {
   uniqueNamesGenerator,
   colors,
@@ -70,7 +67,6 @@ const SetAvatar = () => {
       dictionaries: [animals, colors, countries, names, languages], // colors can be omitted here as not used
       length: 2,
     });
-    // console.log(shortName);
 
     return shortName;
   };
@@ -96,7 +92,6 @@ const SetAvatar = () => {
         }
 
         setImgURL(imgData);
-        // console.log(imgData);
         setLoading(false);
       }
 
@@ -109,7 +104,6 @@ const SetAvatar = () => {
       toast.error("Please select an avatar", toastOptions);
     } else {
       const user = JSON.parse(localStorage.getItem("user"));
-      // console.log(user);
 
       const { data } = await axios.post(`${setAvatarAPI}/${user._id}`, {
         image: imgURL[selectedAvatar],
@@ -127,85 +121,14 @@ const SetAvatar = () => {
     }
   };
 
-  // const particlesInit = useCallback(async (engine) => {
-  //   // console.log(engine);
-  //   await loadFull(engine);
-  // }, []);
-
-  // const particlesLoaded = useCallback(async (container) => {
-  //   // await console.log(container);
-  // }, []);
-
   return (
     <>
       <div style={{ position: "relative", overflow: "hidden" }}>
-        {/* <Particles
-          id="tsparticles"
-          init={particlesInit}
-          loaded={particlesLoaded}
-          options={{
-            background: {
-              color: {
-                value: "#000",
-              },
-            },
-            fpsLimit: 60,
-            particles: {
-              number: {
-                value: 200,
-                density: {
-                  enable: true,
-                  value_area: 800,
-                },
-              },
-              color: {
-                value: "#ffcc00",
-              },
-              shape: {
-                type: "circle",
-              },
-              opacity: {
-                value: 0.5,
-                random: true,
-              },
-              size: {
-                value: 3,
-                random: { enable: true, minimumValue: 1 },
-              },
-              links: {
-                enable: false,
-              },
-              move: {
-                enable: true,
-                speed: 2,
-              },
-              life: {
-                duration: {
-                  sync: false,
-                  value: 3,
-                },
-                count: 0,
-                delay: {
-                  random: {
-                    enable: true,
-                    minimumValue: 0.5,
-                  },
-                  value: 1,
-                },
-              },
-            },
-            detectRetina: true,
-          }}
-          style={{
-            position: "absolute",
-            zIndex: -1,
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-          }}
-        /> */}
-
+        <div className="theme-options">
+          <ThemeOption theme="light" />
+          <ThemeOption theme="purple" />
+          <ThemeOption theme="dark" />
+        </div>
         {loading === true ? (
           <>
             {/* <Container></Container> */}
@@ -226,22 +149,9 @@ const SetAvatar = () => {
               style={{ position: "relative", zIndex: "2 !important" }}
             >
               <div className="avatarBox">
-                <h1 className="text-center text-white mt-5">
+                <h1 className="text-center avatar-title mt-5">
                   Choose Your Avatar
                 </h1>
-                {/* <div className="imgBox">
-                        
-                        {imgURL.map((image, index)=> {
-
-                            console.log(image);
-                            return(
-                                <img key={index} src={image} alt="" className={`avatar ${selectedAvatar === index ? "selected" : ""} img-circle imgAvatar`} onClick={() => setSelectedAvatar(index)} width="250px" height="250px"/>
-                            )
-                        })}
-                            
-                        
-
-                    </div> */}
                 <div className="container">
                   <div className="row">
                     {imgURL.map((image, index) => {

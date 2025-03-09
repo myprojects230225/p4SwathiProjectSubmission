@@ -10,6 +10,6 @@
 .btnStyle:hover{
     background-color: rgb(75, 11, 11);
 }
-.login-icon-color, .reg-title, .forget-pass, .pass-title, .email-title, .login-title{
+.login-icon-color, .reg-title, .forget-pass, .pass-title, .email-title, .login-title, .name-title, .reg-name-title{
     color: var(--primary-text-color);
 }

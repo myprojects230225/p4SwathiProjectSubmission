@@ -1,11 +1,9 @@
 import React from "react";
-// import CardBox from "./CardBox";
 import { Container, Row } from "react-bootstrap";
 import CircularProgressBar from "../../components/CircularProgressBar";
 import LineProgressBar from "../../components/LineProgressBar";
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
-// import MovingIcon from '@mui/icons-material/Moving';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 
@@ -22,8 +20,6 @@ const Analytics = ({ transactions }) => {
     (totalIncomeTransactions.length / TotalTransactions) * 100;
   let totalExpensePercent =
     (totalExpenseTransactions.length / TotalTransactions) * 100;
-
-  // console.log(totalIncomePercent, totalExpensePercent);
 
   const totalTurnOver = transactions.reduce(
     (acc, transaction) => acc + transaction.amount,

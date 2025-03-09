@@ -147,7 +147,6 @@ const Home = () => {
     const fetchAllTransactions = async () => {
       try {
         setLoading(true);
-        console.log(cUser._id, frequency, startDate, endDate, type);
         const { data } = await axios.post(getTransactions, {
           userId: cUser._id,
           frequency: frequency,
@@ -155,13 +154,11 @@ const Home = () => {
           endDate: endDate,
           type: type,
         });
-        console.log(data);
   
         setTransactions(data.transactions);
   
         setLoading(false);
       } catch (err) {
-        // toast.error("Error please Try again...", toastOptions);
         setLoading(false);
       }
     };
